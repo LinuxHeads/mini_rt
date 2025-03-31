@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:47:23 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 21:25:33 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/03/31 21:29:19 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int     parse_line(char *line, t_scene *scene)
         parse_sphere(elements, scene);
     else if (ft_strncmp(elements[0], "pl", 2) == 0)
         parse_plane(elements, scene);
-    // else if (ft_strncmp(elements[0], "cy", 2) == 0)
-    //     parse_cylinder(elements, scene);
+    else if (ft_strncmp(elements[0], "cy", 2) == 0)
+        parse_cylinder(elements, scene);
     else
     {
         free_split(elements);

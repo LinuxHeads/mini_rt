@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:18:56 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 21:27:49 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/03/31 21:32:59 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ int parse_camera(char **elements, t_scene *scene);
 int parse_light(char **elements, t_scene *scene);
 int parse_sphere(char **elements, t_scene *scene);
 int parse_plane(char **elements, t_scene *scene);
+int parse_cylinder(char **elements,t_scene *scene);
 void    init(t_scene *scene);
 #endif /* MINIRT_H */

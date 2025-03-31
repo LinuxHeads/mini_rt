@@ -19,6 +19,8 @@ SRC =  	main.c \
 		parser/parse_utils/input_checker.c \
 		parser/parse_types/parse_ambient.c \
 		parser/parse_types/parse_camera.c \
+		parser/parse_types/parse_light.c \
+		parser/parse_types/parse_sphere.c \
 # Automatically find the full paths of the source files
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))

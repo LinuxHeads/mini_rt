@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:18:56 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 19:43:06 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/03/31 21:17:11 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ void  free_split(char **split);
 int    is_valid_color(const char *color);
 t_vector parse_vector(char *vec_string, int *error);
 int parse_camera(char **elements, t_scene *scene);
+int parse_light(char **elements, t_scene *scene);
 void    init(t_scene *scene);
 #endif /* MINIRT_H */

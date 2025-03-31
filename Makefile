@@ -11,11 +11,14 @@ OBJS_DIR = objs
 
 
 SRC =  	main.c \
+		init.c \
 		exit_handler.c \
 		parser/parser.c \
-		parser/input_checker.c \
-		parser/parse_types/parse_color.c\
-		parser/parse_types/parse_ambient.c 
+		parser/parse_utils/parse_color.c\
+		parser/parse_utils/parse_vector.c \
+		parser/parse_utils/input_checker.c \
+		parser/parse_types/parse_ambient.c \
+		parser/parse_types/parse_camera.c \
 # Automatically find the full paths of the source files
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))

@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:17:33 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 04:55:52 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:28:47 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ int main(int argc, char **argv)
         write(2, "Usage: ./mini_rt scene.rt\n", 27);
         return (1);
     }
-    scene = ft_calloc(1, sizeof(t_scene));
+    scene = malloc(sizeof(t_scene));
     if (!scene)
     {
         write(2, "Error: Memory allocation failed\n", 33);
         return (1);
     }
+    init(scene);
     parser(argv[1], scene , argv);
     
 }

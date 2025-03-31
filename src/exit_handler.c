@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:56:30 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 05:49:07 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:22:00 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void   ft_exit_handler(char **message, t_scene *scene, int codes, char **strings
         free(scene);
     }
     if (strings)
-        free_split(strings);
+        printf("hi\n");
+        // free_split(strings);
     if (message)
         print_message(message);
     exit(codes & 1);

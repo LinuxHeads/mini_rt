@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:47:23 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 06:03:26 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:33:11 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int     parse_line(char *line, t_scene *scene)
         return (-1);
     if (ft_strncmp(elements[0], "A", 1) == 0)
         prase_ambient(elements, scene);
-    // else if (ft_strncmp(elements[0], "C", 1) == 0)
-    //     parse_camera(elements, scene);
+    else if (ft_strncmp(elements[0], "C", 1) == 0)
+        parse_camera(elements, scene);
     // else if (ft_strncmp(elements[0], "L", 1) == 0)
     //     parse_light(elements, scene);
     // else if (ft_strncmp(elements[0], "sp", 2) == 0)

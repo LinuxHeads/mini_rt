@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 05:02:00 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 19:40:59 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/03/31 22:55:35 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int prase_ambient(char **elements, t_scene *scene)
     error = 0;
     if (!elements || !scene)
         return (-1);
-    if (!is_valid_input(elements[1]))
+    if (!is_valid_float(elements[1]))
     {
         // free_split(elements);
         // ft_exit_handler((char *[]){"Error: Invalid ambient light ratio.\n", "line:",(char *) __LINE__ ,"\nfunction:", (char *)__FUNCTION__,"\n",NULL}, scene, 1, elements);

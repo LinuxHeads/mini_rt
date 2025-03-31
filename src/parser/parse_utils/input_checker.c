@@ -6,13 +6,13 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 05:04:47 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 19:11:52 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/03/31 22:55:35 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int is_valid_input(char *line)
+int is_valid_float(char *line)
 {
     int i;
 
@@ -45,7 +45,7 @@ int    is_valid_color(const char *color)
     i = 0;
     while (rgb[i])
     {
-        if (!is_valid_input(rgb[i]))
+        if (!is_valid_float(rgb[i]))
         {
             free_split(rgb);
             return (0);

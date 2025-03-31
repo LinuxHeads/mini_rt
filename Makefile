@@ -23,6 +23,7 @@ SRC =  	main.c \
 		parser/parse_types/parse_sphere.c \
 		parser/parse_types/parse_plane.c \
 		parser/parse_types/parse_cylinder.c \
+		parser/parse_utils/file_utils.c \
 # Automatically find the full paths of the source files
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))

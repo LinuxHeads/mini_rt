@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:47:23 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 23:06:06 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/04/01 02:47:12 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int     parse_line(char *line, t_scene *scene)
         free_split(elements);
         return (-1);
     }
+    free_split(elements);
     return (1);
 }
 

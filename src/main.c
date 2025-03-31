@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:17:33 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 22:39:38 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/04/01 02:47:41 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int main(int argc, char **argv)
     }
     init(scene);
     parser(argv[1], scene);
-    
+    free(scene);
+    return (0);
 }

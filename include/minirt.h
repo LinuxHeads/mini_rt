@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:18:56 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 23:06:01 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/04/01 03:06:09 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <math.h>
 # include "../libft/libft.h"
+# include <MLX42.h>
 
 typedef struct s_rgb
 {
@@ -89,6 +90,8 @@ typedef struct s_scene
     t_plane plane;
     t_sphere sphere;
     t_cylinder cylinder;
+    mlx_t *mlx;
+    mlx_image_t *image;
     int fd;
 } t_scene;
 

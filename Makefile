@@ -6,6 +6,7 @@ LIBFT_DIR = libft
 LDFLAGS = -L$(LIBFT_DIR) -lft -lreadline
 LIBFT = $(LIBFT_DIR)/libft.a
 
+MLX42_FLAGS = -lmlx42 -lm -lpthread -ldl -lglfw
 SRC_DIR = src
 OBJS_DIR = objs
 
@@ -31,7 +32,7 @@ OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(MLX42_FLAGS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)

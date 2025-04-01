@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:47:23 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/04/01 02:47:12 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/04/01 02:49:04 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void    parse_into_scene(t_scene *scene)
         if (ret == -1)
         {
             free(scene);
-            exit(1);
+            exit(1);// not good
         }
     }
     close(scene->fd);

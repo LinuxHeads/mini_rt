@@ -6,43 +6,52 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 05:02:00 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 22:55:35 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/04/02 03:36:28 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int prase_ambient(char **elements, t_scene *scene)
+void print_ambient(t_scene *scene)
 {
-    printf("Parsing ambient light...\n");
+    printf("Ambient light ratio: %f\n", scene->amb_light.ratio);
+    printf("Ambient light color: %d %d %d\n", scene->amb_light.color.r,
+           scene->amb_light.color.g, scene->amb_light.color.b);
+}
+
+int parse_ambient(char **elements, t_scene *scene)
+{
     int error;
-    
+
     error = 0;
-    if (!elements || !scene)
-        return (-1);
+    if (count_tokens(elements) != 3)
+    {
+        ft_putendl_fd("Error: Ambient light expects exactly 3 elements", 2);
+        return (0);
+    }
     if (!is_valid_float(elements[1]))
     {
-        // free_split(elements);
-        // ft_exit_handler((char *[]){"Error: Invalid ambient light ratio.\n", "line:",(char *) __LINE__ ,"\nfunction:", (char *)__FUNCTION__,"\n",NULL}, scene, 1, elements);
+        ft_putendl_fd("Error: Invalid ambient light ratio.", 2);
+        return (0);
     }
     scene->amb_light.ratio = ft_atod(elements[1]);
     if (scene->amb_light.ratio < 0 || scene->amb_light.ratio > 1)
     {
-        // free_split(elements);
-        // ft_exit_handler((char *[]){"Error: Ambient light ratio out of range\n", "line:", (char *) __LINE__ ,"\nfunction:", (char *) __FUNCTION__,"\n",NULL}, scene, 1, elements);
+        ft_putendl_fd("Error: Ambient light ratio out of range (00).", 2);
+        return (0);
     }
+    // Validate color before parsing
     if (!is_valid_color(elements[2]))
     {
-        // free_split(elements);
-        // ft_exit_handler((char *[]){"Error: Invalid ambient light color\n", "line:", (char *) __LINE__ ,"\nfunction:", (char *)__FUNCTION__,"\n",NULL}, scene, 1, elements);
+        ft_putendl_fd("Error: Invalid ambient light color format.", 2);
+        return (0);
     }
-    scene->amb_light.color = parse_color(elements[2], &error);
+    scene->amb_light.color = parse_color_str(elements[2], &error);
     if (error)
     {
-        // free_split(elements);
-        // ft_exit_handler((char *[]){"Error: Failed to parse ambient light color\n", "line:", (char *) __LINE__ ,"\nfunction:", (char *)__FUNCTION__,"\n",NULL}, scene, 1, elements);
+        ft_putendl_fd("Error: Failed to parse ambient light color.", 2);
+        return (0);
     }
-    printf("Ambient light ratio: %f\n", scene->amb_light.ratio);
-    printf("Ambient light color: %d %d %d\n", scene->amb_light.color.r, scene->amb_light.color.g, scene->amb_light.color.b);
+    print_ambient(scene);
     return (1);
 }

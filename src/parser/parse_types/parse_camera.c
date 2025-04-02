@@ -6,39 +6,51 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 19:07:48 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/03/31 19:41:47 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/04/02 03:34:26 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+void    print_camera(t_camera camera)
+{
+    printf("Camera position: %f %f %f\n", camera.pos.x, camera.pos.y, camera.pos.z);
+    printf("Camera normal: %f %f %f\n", camera.norm_3d.x, camera.norm_3d.y, camera.norm_3d.z);
+    printf("Camera fov: %f\n", camera.fov);
+}
+
 int parse_camera(char **elements, t_scene *scene)
 {
-    printf("Parsing camera...\n");
     t_vector vec;
-    int error;
-    
-    error = 0;
-    // printf ("Camera elements: %s, %s, %s\n", elements[1], elements[2], elements[3]);
-    vec = parse_vector(elements[1], &error);
-    if (error)
+
+    if (count_tokens(elements) != 4)
     {
-        // ft_exit_handler((char **){"Error: Failed to parse camera vector\n", "line:", __LINE__ ,"\nfunction:", __FUNCTION__,"\n",NULL}, scene, 1, NULL);
-        printf("Error: Failed to parse camera vector 1\n");
-        return (-1);
+        ft_putendl_fd("Error: Camera expects exactly 4 elements", 2);
+        return (0);
+    }
+    if (!parse_vector_components(elements[1], &vec))
+    {
+        ft_putendl_fd("Error: Failed to parse camera position vector", 2);
+        return (0);
     }
     scene->camera.pos = vec;
-    scene->camera.norm_3d = parse_vector(elements[2], &error);
-    if (error)
+    if (!parse_vector_components(elements[2], &vec))
     {
-        printf("Error: Failed to parse camera vector 2\n");
-        // ft_exit_handler((char **){"Error: Failed to parse camera vector\n", "line:", __LINE__ ,"\nfunction:", __FUNCTION__,"\n",NULL}, scene, 1, NULL);
-        return (-1);
+        ft_putendl_fd("Error: Failed to parse camera orientation vector", 2);
+        return (0);
+    }
+    scene->camera.norm_3d = vec;
+    if (!is_valid_float(elements[3]))
+    {
+        ft_putendl_fd("Error: Invalid camera FOV", 2);
+        return (0);
     }
     scene->camera.fov = ft_atod(elements[3]);
-
-    printf("Camera position: (%.2f,  %.2f,  %.2f)\n", scene->camera.pos.x, scene->camera.pos.y, scene->camera.pos.z);
-    printf("Camera vector: (%f, %f, %f)\n", scene->camera.norm_3d.x, scene->camera.norm_3d.y, scene->camera.norm_3d.z);
-    printf("Camera fov: %f\n", scene->camera.fov);
-    return (0);
+    if (scene->camera.fov <= 0 || scene->camera.fov >= 180)
+    {
+        ft_putendl_fd("Error: Camera FOV must be between 0 and 180 degrees", 2);
+        return (0);
+    }
+    print_camera(scene->camera);    
+    return (1);
 }

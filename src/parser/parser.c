@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:47:23 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/04/01 02:49:04 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/04/02 03:42:28 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,32 @@
 int     parse_line(char *line, t_scene *scene)
 {
     char **elements;
+    int code = 1;
     
     if (line[0] == '\0')
         return (0);
     elements = ft_split(line, ' ');
     if (!elements)
-        return (-1);
+         code = -1;
     if (ft_strncmp(elements[0], "A", 1) == 0)
-        prase_ambient(elements, scene);
+         code = parse_ambient(elements, scene);
     else if (ft_strncmp(elements[0], "C", 1) == 0)
-        parse_camera(elements, scene);
+         code = parse_camera(elements, scene);
     else if (ft_strncmp(elements[0], "L", 1) == 0)
-        parse_light(elements, scene);
+         code = parse_light(elements, scene);
     else if (ft_strncmp(elements[0], "sp", 2) == 0)
-        parse_sphere(elements, scene);
+         code = parse_sphere(elements, scene);
     else if (ft_strncmp(elements[0], "pl", 2) == 0)
-        parse_plane(elements, scene);
+         code = parse_plane(elements, scene);
     else if (ft_strncmp(elements[0], "cy", 2) == 0)
-        parse_cylinder(elements, scene);
+         code = parse_cylinder(elements, scene);
     else
     {
         free_split(elements);
-        return (-1);
+        return (0);
     }
     free_split(elements);
-    return (1);
+    return (code);
 }
 
 void    parse_into_scene(t_scene *scene)
@@ -59,8 +60,9 @@ void    parse_into_scene(t_scene *scene)
         }
         ret = parse_line(line, scene);
         free(line);
-        if (ret == -1)
+        if (!ret)
         {
+            close_file(scene);
             free(scene);
             exit(1);// not good
         }

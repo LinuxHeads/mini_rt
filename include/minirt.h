@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 04:18:56 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/04/01 03:06:09 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/04/02 03:42:19 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ typedef struct s_scene
 
 // parsing functions
 void        parser(char *filename, t_scene *scene);
-t_rgb       parse_color(const char *color, int *error);
-int         prase_ambient(char **elements, t_scene *scene);
-t_vector    parse_vector(char *vec_string, int *error);
+t_rgb       parse_color_str(const char *color_str, int *error);
+int         parse_ambient(char **elements, t_scene *scene);
+int         parse_vector_components(const char *vec_string, t_vector *vec);
 int         parse_camera(char **elements, t_scene *scene);
 int         parse_light(char **elements, t_scene *scene);
 int         parse_sphere(char **elements, t_scene *scene);
@@ -108,7 +108,7 @@ int         parse_plane(char **elements, t_scene *scene);
 int         parse_cylinder(char **elements,t_scene *scene);
 
 // input checkers
-int         is_valid_float(char *line);
+int         is_valid_float(const char *line);
 int         is_valid_color(const char *color);
 
 
@@ -117,5 +117,6 @@ void    ft_exit_handler(char **message, t_scene *scene, int codes, char **string
 void    free_split(char **split);
 void    check_file_extension(char *filename, t_scene *scene);
 void    open_file(char *filename, t_scene *scene);
-
+void    close_file(t_scene *scene);
+int     count_tokens(char **tokens);
 #endif /* MINIRT_H */
